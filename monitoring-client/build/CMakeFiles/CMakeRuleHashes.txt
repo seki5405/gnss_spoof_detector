@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+9317a15880db5a8f804e709000fe0e0a gnss_synchro.pb.h

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmonitoring_lib.a  CMakeFiles/monitoring_lib.dir/gnss_synchro_udp_source.cc.o CMakeFiles/monitoring_lib.dir/gnss_synchro.pb.cc.o
+/usr/bin/ranlib libmonitoring_lib.a

@@ -1,0 +1,4 @@
+/media/taeho/Seagate/gsoc_gnsssdr/texbat/monitoring-client/build/CMakeFiles/rebuild_cache.dir
+/media/taeho/Seagate/gsoc_gnsssdr/texbat/monitoring-client/build/CMakeFiles/monitoring-client.dir
+/media/taeho/Seagate/gsoc_gnsssdr/texbat/monitoring-client/build/CMakeFiles/edit_cache.dir
+/media/taeho/Seagate/gsoc_gnsssdr/texbat/monitoring-client/build/CMakeFiles/monitoring_lib.dir
