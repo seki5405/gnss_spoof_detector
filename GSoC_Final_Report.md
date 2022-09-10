@@ -1,6 +1,6 @@
 # GSoC Final Report
 
-![Untitled](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled.png)
+![Untitled](/GSoC_Final_Report/images/Untitled.png)
 
 # Anomaly detection and recovery with a Deep-learning-based approach
 
@@ -28,7 +28,7 @@ GNSS, Network-Spoofing, Pandas, Numpy, Geojson, Keras, Tensorflow, C++, Python
 
 ## TImeline:
 
-![Untitled](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%201.png)
+![Untitled](/GSoC_Final_Report/images/Untitled%201.png)
 
 ---
 
@@ -40,7 +40,7 @@ The TEXBAT dataset was presented in 2012 for simulating GNSS receiver under spoo
 
 The dataset is composed of 8 different scenarios. 
 
-![Scenario description (ds1 to ds6)](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%202.png)
+![Scenario description (ds1 to ds6)](/GSoC_Final_Report/images/Untitled%202.png)
 
 Scenario description (ds1 to ds6)
 
@@ -63,17 +63,17 @@ I explored the dataset and extract observations as below;
     
     - cn0_db_hz : C/N0 estimation, in dB-Hz.
         
-        ![Untitled](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%203.png)
+        ![Untitled](/GSoC_Final_Report/images/Untitled%203.png)
         
         C/N0 is the one of the most frequently used variables to find anomaly in GNSS. So I investigated from the beginning. As I expected, C/N0 showed notable difference between spoofed and clean data. In normal status, C/N0 tends to be stable while it fluctuates unexpectedly in case of spoofing attack.
         
     - carrier_doppler_hz : Doppler shift, in Hz.
         
-        ![Case 1 : Slight fluctuation during linear decrease/increase](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%204.png)
+        ![Case 1 : Slight fluctuation during linear decrease/increase](/GSoC_Final_Report/images/Untitled%204.png)
         
         Case 1 : Slight fluctuation during linear decrease/increase
         
-        ![Case 2 : Abrupt extreme jump/drop](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%205.png)
+        ![Case 2 : Abrupt extreme jump/drop](/GSoC_Final_Report/images/Untitled%205.png)
         
         Case 2 : Abrupt extreme jump/drop
         
@@ -81,7 +81,7 @@ I explored the dataset and extract observations as below;
         
     - Pseudorange : Difference between the time of reception and the time of transmissinon.
         
-        ![Untitled](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%206.png)
+        ![Untitled](/GSoC_Final_Report/images/Untitled%206.png)
         
         Since the Pseudorange is calculated as Doppler Shift multiplied by the negative of carrier wavelength, it’s supposed to be static. However, the abrupt jump/drop was observed in spoofed scenarios.
         
@@ -94,37 +94,37 @@ Code developed during the summer is separated from gnss-sdr repository. The repo
 - monitoring-client: Modified based on the existing monitoring-client
     - Changed processing variables(2→6)
         
-        ![Untitled](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%207.png)
+        ![Untitled](/GSoC_Final_Report/images/Untitled%207.png)
         
     - Implement additional socket communication to detector module
         
-        ![Untitled](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%208.png)
+        ![Untitled](/GSoC_Final_Report/images/Untitled%208.png)
         
     - Data extraction&transmission from the monitoring-client to python file
         - Save data for each channel to `line` and combine it to `log`
             
-            ![Untitled](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%209.png)
+            ![Untitled](/GSoC_Final_Report/images/Untitled%209.png)
             
         - Transmit `log` to detector(collector) module
             
-            ![Untitled](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2010.png)
+            ![Untitled](/GSoC_Final_Report/images/Untitled%2010.png)
             
 - spoof_detector
     - `[collector.py](http://collector.py)` : Save the streamed data for the future utilization
         
-        ![Untitled](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2011.png)
+        ![Untitled](/GSoC_Final_Report/images/Untitled%2011.png)
         
-        ![Untitled](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2012.png)
+        ![Untitled](/GSoC_Final_Report/images/Untitled%2012.png)
         
     - Autoencoder(`train.ipynb`)
         
-        ![Untitled](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2013.png)
+        ![Untitled](/GSoC_Final_Report/images/Untitled%2013.png)
         
     - `detector.py` : Load the trained model and determine the occurance of spoofing
         
-        ![Untitled](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2014.png)
+        ![Untitled](/GSoC_Final_Report/images/Untitled%2014.png)
         
-        ![Untitled](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2015.png)
+        ![Untitled](/GSoC_Final_Report/images/Untitled%2015.png)
         
 
 ### Variables
@@ -140,31 +140,31 @@ I chose 4 variables from tracking module based on the observation I found during
 
 Initially developed LSTM based autoencoder based on the thought that the streamed consecutive data will be well processed with RNN type models. But changed to use Linear autoencoder at last because LSTM based model requires a lot of calculation which is not proper to process streamed data. Also, the Linear model also worked well on detecting spoofing attacks.
 
-![Linear Autoencoder model structure](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2016.png)
+![Linear Autoencoder model structure](/GSoC_Final_Report/images/Untitled%2016.png)
 
 Linear Autoencoder model structure
 
 Before feeding the data, I preprocessed data by normalizing and getting `diff()`(Getting offset from the previous timestep).
 
-![Normalization using StandardScaler()](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2017.png)
+![Normalization using StandardScaler()](/GSoC_Final_Report/images/Untitled%2017.png)
 
 Normalization using StandardScaler()
 
 And here’re the preprocessed data with comparison with CleanStatic data.
 
-![Prompt_i](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2018.png)
+![Prompt_i](/GSoC_Final_Report/images/Untitled%2018.png)
 
 Prompt_i
 
-![Prompt_q](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2019.png)
+![Prompt_q](/GSoC_Final_Report/images/Untitled%2019.png)
 
 Prompt_q
 
-![cn0_db_hz](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2020.png)
+![cn0_db_hz](/GSoC_Final_Report/images/Untitled%2020.png)
 
 cn0_db_hz
 
-![carrier_doppler_hz](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2021.png)
+![carrier_doppler_hz](/GSoC_Final_Report/images/Untitled%2021.png)
 
 carrier_doppler_hz
 
@@ -172,17 +172,17 @@ As we can see, there’s a starting of attack at around 1200th timestep. And we 
 
 I trained the autoencoder model with `cleanStatic` scenario which is normal. The autoencoder model is trained to generate the output of which label is its input. So the model is trained to generate the input for the normal data, which shows higher Mean Squared Error for the abnormal(Spoofed) data.
 
-![Mean Squared Error equation](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2022.png)
+![Mean Squared Error equation](/GSoC_Final_Report/images/Untitled%2022.png)
 
 Mean Squared Error equation
 
 Typically, the model shows more than 50 of MSE(Mean Squared Error) for the Spoofed timestep.
 
-![MSE graph for cleanStatic dataset, from this, I set the threshold to 50.](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2023.png)
+![MSE graph for cleanStatic dataset, from this, I set the threshold to 50.](/GSoC_Final_Report/images/Untitled%2023.png)
 
 MSE graph for cleanStatic dataset, from this, I set the threshold to 50.
 
-![MSE graph of 8 channels from the 3rd scenario. The model triggers alerts if the error goes over 50.](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2024.png)
+![MSE graph of 8 channels from the 3rd scenario. The model triggers alerts if the error goes over 50.](/GSoC_Final_Report/images/Untitled%2024.png)
 
 MSE graph of 8 channels from the 3rd scenario. The model triggers alerts if the error goes over 50.
 
@@ -194,7 +194,7 @@ Since the model was developed with Python, I implemented socket communication be
 
 The detector is designed to work in real time. It receives streamed data from the monitoring-client and parse it into different channel data. The parsed data is preprocessed and fed to the pre-trained model. Based on the gap between the prediction and the input, it can get MSE(Mean Squared Error) for each channel. If the MSE value goes over the designated threshold(50 in the experiment), it will trigger alarm message.
 
-![Triggered alert messages (detector.py)](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2025.png)
+![Triggered alert messages (detector.py)](/GSoC_Final_Report/images/Untitled%2025.png)
 
 Triggered alert messages (detector.py)
 
@@ -204,11 +204,11 @@ While considering the streamed data processing, came up with an idea of using st
 
 Used `cn0_db_hz` to check its performance, and it worked well but parameter optimization seems to be necessary.
 
-![Spoofed signal](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2026.png)
+![Spoofed signal](/GSoC_Final_Report/images/Untitled%2026.png)
 
 Spoofed signal
 
-![Normal signal](GSoC%20Final%20Report%20677492d2413848bd8a67e14ef145f8bc/Untitled%2027.png)
+![Normal signal](/GSoC_Final_Report/images/Untitled%2027.png)
 
 Normal signal
 
